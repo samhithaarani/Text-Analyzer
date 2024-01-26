@@ -59,12 +59,26 @@ const TextAnalyzer = () => {
   };
 
   const handleChangeTextInput = (e) => {
-    setTextInput(e.target.value);
+    const text = e.target.value;
+    setTextInput(text);
+  
     if (inputType === 'word') {
-      const metrics = analyzeText(e.target.value);
+      const metrics = analyzeText(text);
       setOutputMetrics(metrics);
+    } else {
+      // For paragraph input, update metrics directly
+      const metrics = analyzeText(text);
+      setOutputMetrics({
+        charCount: metrics.charCount,
+        wordCount: metrics.wordCount,
+        sentenceCount: metrics.sentenceCount,
+        paragraphCount: metrics.paragraphCount,
+        spaceCount: metrics.spaceCount,
+        punctuationCount: metrics.punctuationCount,
+      });
     }
   };
+  
 
   const handleProcessWord = async () => {
     try {
@@ -172,29 +186,12 @@ const TextAnalyzer = () => {
               </Card>
               <Card>
                 <Card.Body>
-                <Card.Text>
-  {wordInfo.definition ? (
-    <p><b>Definition: </b>{wordInfo.definition}</p>
-  ) : (
-    <p><b>Definition: </b>N/A</p>
-  )}
-  {wordInfo.partOfSpeech ? (
-    <p><b>Part of Speech:</b> {wordInfo.partOfSpeech}</p>
-  ) : (
-    <p><b>Part of Speech:</b> N/A</p>
-  )}
-  {wordInfo.synonyms ? (
-    <p><b>Synonyms: </b>{wordInfo.synonyms}</p>
-  ) : (
-    <p><b>Synonyms: </b>N/A</p>
-  )}
-  {wordInfo.antonyms ? (
-    <p><b>Antonyms:</b> {wordInfo.antonyms}</p>
-  ) : (
-    <p><b>Antonyms:</b> N/A</p>
-  )}
-</Card.Text>
-
+                  <Card.Text>
+                    <p><b>Definition: </b>{wordInfo.definition || 'N/A'}</p>
+                    <p><b>Part of Speech:</b> {wordInfo.partOfSpeech || 'N/A'}</p>
+                    <p><b>Synonyms: </b>{wordInfo.synonyms || 'N/A'}</p>
+                    <p><b>Antonyms:</b> {wordInfo.antonyms || 'N/A'}</p>
+                  </Card.Text>
                 </Card.Body>
               </Card>
             </Col>

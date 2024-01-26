@@ -62,9 +62,7 @@
     margin-bottom: 20px;
   }
 
-  /* App.css */
 
-/* Custom styles for the table */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -84,14 +82,7 @@ table {
   th {
     font-weight: bold;
   }
-/*   
-  responsive */
 
-
-  /* App.css */
-/* App.css */
-
-/* Table */
 .table-responsive {
     overflow-x: auto;
   }

@@ -131,13 +131,13 @@ const TextAnalyzer = () => {
             className={`input-type-button ${inputType === 'word' ? 'active' : ''}`}
             onClick={() => handleChangeInputType('word')}
           >
-            Word Input
+            Word-Input
           </span>
           <span
             className={`input-type-button ${inputType === 'para' ? 'active' : ''}`}
             onClick={() => handleChangeInputType('para')}
           >
-            Paragraph
+            Paragraph-Input
           </span>
         </div>
 
